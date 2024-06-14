@@ -40,21 +40,3 @@ def main(fp):
     li = sorted(list(counter.items()), key=lambda x: x[1], reverse=True)
     with open(join(root, "count.json"), "w") as f:
         dump(li, f, ensure_ascii=False)
-    s = []
-    t = []
-    limit = 1200
-    for i in li:
-        s.append(i[0])
-        if len(s) >= limit:
-            t.append(s)
-            s = []
-            limit = 600
-            if len(t) > 15:
-                break
-
-    li = []
-    for i in t:
-        li.append("".join(sorted(i)))
-
-    with open(join(root, "split.json"), "w") as f:
-        dump(li, f, ensure_ascii=False)
